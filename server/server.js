@@ -1,13 +1,14 @@
-const Express = require("express");
-const Dotenv = require("dotenv");
+const express = require('express');
+const dotenv = require('dotenv');
 
-Dotenv.config({ path: "./server/config/config.env" });
+dotenv.config({path: './server/config/config.env'});
 
-const app = Express();
+const app = express();
 
 const PORT = process.env.PORT || 5000;
 
+const devEnv = process.env.NODE_ENV;
 app.listen(
-  PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+    PORT,
+    console.log(`Server running in ${devEnv} mode on port ${PORT}`),
 );
