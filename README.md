@@ -1,0 +1,2 @@
+# invitation-manager
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d46208e0d9b842af81e4d17bd481ea66)](https://app.codacy.com/manual/sam-spain/invitation-manager?utm_source=github.com&utm_medium=referral&utm_content=sam-spain/invitation-manager&utm_campaign=Badge_Grade_Settings)
