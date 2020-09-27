@@ -1,24 +1,12 @@
-const Express = require('express');
+const Express = require("express");
+const {
+  getInvitees,
+  getInvitee,
+  createInvitee,
+  updateInvitee,
+  deleteInvitee,
+} = require("../controllers/invitees.js");
 const Router = Express.Router();
-
-Router.get('/', (req, res) => {
-  res.status(200).json({id: 1, name: 'Billy Bobson'});
-});
-
-Router.get('/:id', (req, res) => {
-  res.status(200).json({id: `${req.params.id}`, name: 'Billy Bobson'});
-});
-
-Router.post('/', (req, res) => {
-  res.status(200).json({id: 1, name: 'Billy Bobson'});
-});
-
-Router.put('/:id', (req, res) => {
-  res.status(200).json({id: `${req.params.id}`, name: 'Billy Bobson'});
-});
-
-Router.delete('/:id', (req, res) => {
-  res.status(200).json({id: `${req.params.id}`, name: 'Billy Bobson'});
-});
-
+Router.route("/").get(getInvitees).post(createInvitee);
+Router.route("/:id").get(getInvitee).put(updateInvitee).delete(deleteInvitee);
 module.exports = Router;
