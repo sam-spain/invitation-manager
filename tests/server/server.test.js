@@ -1,5 +1,10 @@
-describe('Sample Test', () => {
-  it('should test that true === true', () => {
-    expect(true).toBe(true);
+const Request = require('supertest');
+const App = require('../../server/app.js');
+
+describe('Test the root path', () => {
+  test('It should response the GET method', () => {
+    return Request(App)
+        .get('/api/v1/invitees')
+        .expect(200);
   });
 });
