@@ -26,12 +26,14 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "cli": "^1.0.1",
     "eslint": "^7.10.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "superagent": "^6.1.0",
-    "supertest": "^5.0.0"
+    "supertest": "^5.0.0",
+    "webpack": "^5.12.3"
   },
   "jest": {
     "testEnvironment": "node",
