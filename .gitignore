@@ -106,3 +106,4 @@ dist
 # Configs
 server/config/config.env
 server/public/app.js
+server/public/app.js.LICENSE.txt

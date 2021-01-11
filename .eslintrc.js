@@ -1,16 +1,15 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'commonjs': true,
-    'es2021': true,
+  env: {
+    browser: true,
+    commonjs: true,
+    es2021: true,
   },
-  'extends': [
-    'google',
-  ],
-  'parserOptions': {
-    'ecmaVersion': 12,
+  extends: ['google'],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
-  'rules': {
+  rules: {
     'new-cap': 'off',
   },
 };
