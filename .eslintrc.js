@@ -11,5 +11,6 @@ module.exports = {
   },
   rules: {
     'new-cap': 'off',
+    'indent': 'off',
   },
 };
