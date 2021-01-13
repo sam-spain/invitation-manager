@@ -27,14 +27,20 @@
     "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "@vue/test-utils": "^1.1.2",
     "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
     "cli": "^1.0.1",
     "eslint": "^7.10.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^26.4.2",
+    "jsdom": "16.4.0",
+    "jsdom-global": "3.0.2",
     "nodemon": "^2.0.4",
     "superagent": "^6.1.0",
     "supertest": "^5.0.0",
@@ -44,18 +50,23 @@
     "webpack-cli": "^4.3.1",
     "webpack-dev-middleware": "^4.0.2"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+      
+    ]
+  },
   "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
+    "moduleNameMapper": {
+      "^vue$": "vue/dist/vue.common.js"
+    },
     "moduleFileExtensions": [
       "js",
-      "json",
       "vue"
     ],
     "transform": {
-      ".*\\.(vue)$": "vue-jest"
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     }
   }
 }
