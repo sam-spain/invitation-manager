@@ -27,6 +27,7 @@
     "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.1.2",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
@@ -37,6 +38,7 @@
     "nodemon": "^2.0.4",
     "superagent": "^6.1.0",
     "supertest": "^5.0.0",
+    "vue-jest": "^3.0.7",
     "vue-loader": "^15.9.6",
     "webpack": "^5.12.3",
     "webpack-cli": "^4.3.1",
@@ -46,6 +48,14 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest"
+    }
   }
 }
