@@ -1,5 +1,5 @@
-const Request = require('supertest');
-const App = require('../../server/app.js');
+import Request from 'supertest';
+import App from '../../server/app.js';
 
 describe('Test Invitee API endpoint', () => {
   test('It should respond to GET', () => {
