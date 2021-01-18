@@ -1,4 +1,4 @@
-import Mongoose from 'mongoose';
+const Mongoose = require('mongoose');
 const InviteeSchema = new Mongoose.Schema({
   enteredName: {
     type: String,
@@ -29,10 +29,12 @@ const InviteeSchema = new Mongoose.Schema({
     type: String,
     trim: true,
   },
-  preferredContact,
-  address: {
+  preferredContact: {
     type: String,
     enum: ['Email', 'Number', 'Facebook'],
+  },
+  address: {
+    type: String,
   },
   location: {
     type: {
@@ -49,11 +51,6 @@ const InviteeSchema = new Mongoose.Schema({
     state: String,
     zipcode: String,
     country: String,
-  },
-  inviteStatus: {
-    type: [String],
-    required: true,
-    enum: ['Not Sent', 'Sent', 'Responded', 'Revoked'],
   },
   invitedToCeremony: {
     type: Boolean,

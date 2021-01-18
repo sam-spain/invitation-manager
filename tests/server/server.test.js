@@ -15,7 +15,7 @@ describe('Test Invitee API endpoint', () => {
   test('It should respond to POST', () => {
     return Request(App)
       .post('/api/v1/invitees')
-      .expect(200);
+      .expect(201);
   });
   test('It should respond to PUT and ID', () => {
     return Request(App)
