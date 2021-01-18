@@ -6,12 +6,15 @@ const Webpack = require('webpack');
 const WebpackConfig = require('../webpack.config');
 const WebpackDevMiddleware = require('webpack-dev-middleware');
 const Path = require('path');
+const connectDb = require('./config/db');
 
 Dotenv.config({path: './server/config/config.env'});
 
+connectDb();
+
 App.listen(
-    PORT,
-    console.log(`Server running in ${devEnv} mode on port ${PORT}`),
+  PORT,
+  console.log(`Server running in ${devEnv} mode on port ${PORT}`),
 );
 
 const compiler = Webpack(WebpackConfig);

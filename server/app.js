@@ -7,7 +7,7 @@ Dotenv.config({path: './server/config/config.env'});
 
 const app = Express();
 
-if ( process.env.NODE_ENV === 'development' ) {
+if (process.env.NODE_ENV === 'development') {
   app.use(Logger('dev'));
 }
 
