@@ -6,6 +6,7 @@ const Logger = require('morgan');
 Dotenv.config({path: './server/config/config.env'});
 
 const app = Express();
+app.use(Express.json());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(Logger('dev'));

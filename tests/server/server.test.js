@@ -1,5 +1,6 @@
 import Request from 'supertest';
 import App from '../../server/app.js';
+import Invitee from '../../server/models/Invitee';
 
 describe('Test Invitee API endpoint', () => {
   test('It should respond to GET', () => {
@@ -13,10 +14,24 @@ describe('Test Invitee API endpoint', () => {
       .expect(200);
   });
   test('It should respond to POST', () => {
+    Invitee.create = jest.fn().mockResolvedValue({
+      name: 'butts',
+    });
     return Request(App)
       .post('/api/v1/invitees')
-      .expect(200);
+      .expect(201)
+      .expect({name: 'butts'});
   });
+  test('Should throw 400 on POST fail', () => {
+    Invitee.create = jest.fn().mockImplementation(() => {
+      throw new Error();
+    });
+    return Request(App)
+      .post('/api/v1/invitees')
+      .expect(400)
+      .expect({message: 'Failed to create.'});
+  });
+
   test('It should respond to PUT and ID', () => {
     return Request(App)
       .put('/api/v1/invitees/1')

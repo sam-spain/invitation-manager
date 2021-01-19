@@ -12,7 +12,7 @@ Dotenv.config({path: './server/config/config.env'});
 
 connectDb();
 
-App.listen(
+const server = App.listen(
   PORT,
   console.log(`Server running in ${devEnv} mode on port ${PORT}`),
 );
@@ -23,4 +23,9 @@ App.use(WebpackDevMiddleware(compiler));
 
 App.get('*', (req, res) => {
   res.sendFile(Path.resolve(__dirname, 'public/index.html'));
+});
+
+process.on('unhandledRejection', (err, promise) => {
+  console.log(`Error: ${err.message}`);
+  server.close(() => process.exit(1));
 });
