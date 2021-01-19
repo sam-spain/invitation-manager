@@ -1,4 +1,3 @@
-const { restart } = require('nodemon');
 const Invitee = require('../models/Invitee');
 
 // @desc        Get all invitees
