@@ -3,6 +3,13 @@ import App from '../../server/app.js';
 import Invitee from '../../server/models/Invitee';
 
 describe('Test Invitee API endpoint', () => {
+  const samSpainInvitee = {
+    enteredName: 'Sam Spain',
+    inviteStatus: 'Sent',
+    invitedToCeremony: 'false',
+    invitedToReception: 'false',
+    invitedToExtraEvent: 'true',
+  };
   test('It should respond to GET', () => {
     return Request(App)
       .get('/api/v1/invitees')
@@ -14,13 +21,11 @@ describe('Test Invitee API endpoint', () => {
       .expect(200);
   });
   test('It should respond to POST', () => {
-    Invitee.create = jest.fn().mockResolvedValue({
-      name: 'butts',
-    });
+    Invitee.create = jest.fn().mockResolvedValue(samSpainInvitee);
     return Request(App)
       .post('/api/v1/invitees')
       .expect(201)
-      .expect({name: 'butts'});
+      .expect(samSpainInvitee);
   });
   test('Should throw 400 on POST fail', () => {
     Invitee.create = jest.fn().mockImplementation(() => {
