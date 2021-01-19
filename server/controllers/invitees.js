@@ -19,8 +19,8 @@ exports.getInvitee = (req, res, next) => {
 // @access      Private
 exports.createInvitee = async (req, res, next) => {
   try {
-    res.status(201).json(newInvitee);
     const newInvitee = await Invitee.create(req.body);
+    res.status(201).json(newInvitee);
   } catch (err) {
     res.status(400).json({message: 'Failed to create.'});
   }
