@@ -1,10 +1,16 @@
+const { restart } = require('nodemon');
 const Invitee = require('../models/Invitee');
 
 // @desc        Get all invitees
 // @route       GET /api/v1/invitees
 // @access      Private
-exports.getInvitees = (req, res, next) => {
-  res.status(200).json({id: 1, name: 'Billy Bobson', hello: req.hello});
+exports.getInvitees = async (req, res, next) => {
+  try {
+    const invitees = await Invitee.find();
+    res.status(200).json(invitees);
+  } catch (err) {
+    res.status(500);
+  }
 };
 
 // @desc        Get single invitees

@@ -10,10 +10,20 @@ describe('Test Invitee API endpoint', () => {
     invitedToReception: 'false',
     invitedToExtraEvent: 'true',
   };
-  test('It should respond to GET', () => {
+  test('Should respond to GET with invitee array 200', () => {
+    Invitee.find = jest.fn().mockResolvedValue([samSpainInvitee]);
     return Request(App)
       .get('/api/v1/invitees')
-      .expect(200);
+      .expect(200)
+      .expect([samSpainInvitee]);
+  });
+  test('Should respond to failed GET with 500', () => {
+    Invitee.find = jest.fn().mockImplementation(() => {
+      throw new Error();
+    });
+    return Request(App)
+      .get('/api/v1/invitees')
+      .expect(500);
   });
   test('It should respond to GET and ID', () => {
     return Request(App)
