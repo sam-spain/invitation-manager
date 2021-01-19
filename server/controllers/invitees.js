@@ -8,15 +8,20 @@ exports.getInvitees = async (req, res, next) => {
     const invitees = await Invitee.find();
     res.status(200).json(invitees);
   } catch (err) {
-    res.status(500);
+    res.status(500).json({message: 'Failed to retrieve invitees.'});
   }
 };
 
 // @desc        Get single invitees
 // @route       GET /api/v1/invitees/:id
 // @access      Private
-exports.getInvitee = (req, res, next) => {
-  res.status(200).json({id: `${req.params.id}`, name: 'Billy Bobson'});
+exports.getInvitee = async (req, res, next) => {
+  try {
+    const invitee = await Invitee.findById(req.params.id);
+    res.status(200).json(invitee);
+  } catch (err) {
+    res.status(500).json({message: 'Failed to retrieve invitee.'});
+  }
 };
 
 // @desc        Create invitee
@@ -27,7 +32,7 @@ exports.createInvitee = async (req, res, next) => {
     const newInvitee = await Invitee.create(req.body);
     res.status(201).json(newInvitee);
   } catch (err) {
-    res.status(400).json({message: 'Failed to create.'});
+    res.status(500).json({message: 'Failed to create invitee.'});
   }
 };
 

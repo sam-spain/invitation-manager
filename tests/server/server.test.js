@@ -23,28 +23,40 @@ describe('Test Invitee API endpoint', () => {
     });
     return Request(App)
       .get('/api/v1/invitees')
+      .expect({message: 'Failed to retrieve invitees.'})
       .expect(500);
   });
   test('It should respond to GET and ID', () => {
+    Invitee.findById = jest.fn().mockResolvedValue(samSpainInvitee);
     return Request(App)
       .get('/api/v1/invitees/1')
+      .expect(samSpainInvitee)
       .expect(200);
   });
-  test('It should respond to POST', () => {
+  test('Should respond to failed GET by ID with 500', () => {
+    Invitee.findById = jest.fn().mockImplementation(() => {
+      throw new Error();
+    });
+    return Request(App)
+      .get('/api/v1/invitees/1')
+      .expect({message: 'Failed to retrieve invitee.'})
+      .expect(500);
+  });
+  test('It should respond to POST with created invitee and 201', () => {
     Invitee.create = jest.fn().mockResolvedValue(samSpainInvitee);
     return Request(App)
       .post('/api/v1/invitees')
       .expect(201)
       .expect(samSpainInvitee);
   });
-  test('Should throw 400 on POST fail', () => {
+  test('Should throw 500 on POST fail', () => {
     Invitee.create = jest.fn().mockImplementation(() => {
       throw new Error();
     });
     return Request(App)
       .post('/api/v1/invitees')
-      .expect(400)
-      .expect({message: 'Failed to create.'});
+      .expect(500)
+      .expect({message: 'Failed to create invitee.'});
   });
 
   test('It should respond to PUT and ID', () => {
