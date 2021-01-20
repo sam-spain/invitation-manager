@@ -42,6 +42,13 @@ describe('Test Invitee API endpoint', () => {
       .expect({message: 'Failed to retrieve invitee.'})
       .expect(500);
   });
+  test('Should respond to empty GET by ID with 400', () => {
+    Invitee.findById = jest.fn().mockResolvedValue(null);
+    return Request(App)
+    .get('/api/v1/invitees/1')
+    .expect({message: 'No invitee with matching ID found.'})
+    .expect(400);
+  });
   test('It should respond to POST with created invitee and 201', () => {
     Invitee.create = jest.fn().mockResolvedValue(samSpainInvitee);
     return Request(App)

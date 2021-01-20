@@ -18,7 +18,9 @@ exports.getInvitees = async (req, res, next) => {
 exports.getInvitee = async (req, res, next) => {
   try {
     const invitee = await Invitee.findById(req.params.id);
-    res.status(200).json(invitee);
+    if (!invitee)
+      res.status(400).json({message: 'No invitee with matching ID found.'});
+    else res.status(200).json(invitee);
   } catch (err) {
     res.status(500).json({message: 'Failed to retrieve invitee.'});
   }
