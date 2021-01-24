@@ -1,4 +1,4 @@
-const Express = require('express');
+import Express from 'express';
 const Dotenv = require('dotenv');
 const Invitees = require('./routes/invitees.js');
 const Logger = require('morgan');
