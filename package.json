@@ -7,7 +7,7 @@
     "start": "npm run build:server && node dist/index.js",
     "dev": "nodemon --exec babel-node server/index",
     "test": "npm run test-server && npm run test-client",
-    "test-server": "jest '/server' --testEnvironment=node",
+    "test-server": "jest '/server' --testEnvironment=node  --coverage",
     "test-client": "jest '/client'",
     "build:client": "webpack --mode=production",
     "build:server": "babel server/ --out-dir dist/ --copy-files"
