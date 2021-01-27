@@ -4,6 +4,7 @@
       class="h-20 text-blue-800 bg-blue-400 flex items-center justify-center text-center"
     >
       <div class="max-w-md mx-auto bg-red-400">I am running vue!</div>
+      <div class="max-w-md mx-auto bg-red-400">And I like it</div>
     </div>
     <div
       class="w-full h-60 text-blue-700 bg-blue-300 flex items-center justify-center"
